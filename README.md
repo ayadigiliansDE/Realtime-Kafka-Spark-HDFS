@@ -28,12 +28,14 @@ Data is sinked to HDFS at `/data/raw/transactions_parquet` with the following op
 ## Execution Evidence
 
 ### 1. Spark Batch Processing
-The Spark engine successfully processes micro-batches and manages offsets. Evidence of batch commits can be seen in the processing logs.
-*(Insert your Screenshot 2026-05-03 124214.png here)*
+The Spark engine successfully processes micro-batches and manages offsets. Evidence of batch commits can be seen in the processing logs below:
+
+![Spark Processing Logs](Screenshot%202026-05-03%20124214.png)
 
 ### 2. HDFS File System Verification
-The HDFS environment confirms the successful creation of over 1,100 Parquet files, ensuring data persistence and scalability.
-*(Insert your Screenshot 2026-05-03 124542.jpg here)*
+The HDFS environment confirms the successful creation of over 1,100 Parquet files, ensuring data persistence and scalability:
+
+![HDFS Parquet Files](Screenshot%202026-05-03%20124542.jpg)
 
 ## How to Run
 1.  **Start Infrastructure:**
