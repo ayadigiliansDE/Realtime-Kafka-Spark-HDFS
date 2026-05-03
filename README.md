@@ -6,59 +6,64 @@
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
 ## 📌 Overview
-This project is a real-time data engineering pipeline built using Apache Kafka, Spark Streaming, Hadoop HDFS, and Docker. It simulates an end-to-end streaming workflow: data ingestion → processing → storage.
+Real-time data engineering pipeline using Kafka, Spark Streaming, Hadoop HDFS, and Docker.
+
+---
 
 ## 🧱 Architecture
-- Kafka Producer → generates streaming data  
-- Kafka Broker → handles message streaming  
-- Spark Streaming → processes real-time data  
-- Hadoop HDFS → stores processed output  
-- Docker Compose → runs the full system  
+Kafka → Spark Streaming → HDFS → Docker
+
+---
 
 ## ⚙️ Tech Stack
-Kafka • Spark • Hadoop HDFS • Python (PySpark) • Docker • Docker Compose  
+Kafka • Spark • Hadoop • Python • Docker
 
-## 📁 Project Structure
-Realtime-Kafka-Spark-HDFS/  
-├── producer.py  
-├── docker-compose.yml  
-├── scripts/spark_streaming.py  
-├── images/  
-│   ├── kafka_producer.png  
-│   ├── spark_streaming.png  
-│   ├── hdfs_output.png  
-│   └── docker_status.png  
-
-## ▶️ How to Run
-docker-compose up -d  
-python producer.py  
-python scripts/spark_streaming.py  
+---
 
 ## 📊 Screenshots
 
-All project execution screenshots are included below:
+All execution screenshots from the project:
 
-📌 Kafka Producer logs  
-📌 Spark Streaming execution  
-📌 HDFS output verification  
-📌 Docker containers status  
-📌 Cluster setup and runtime logs  
+![img](images/Screenshot%202026-05-03%20121735.png)
+![img](images/Screenshot%202026-05-03%20123357.png)
+![img](images/Screenshot%202026-05-03%20123421.png)
+![img](images/Screenshot%202026-05-03%20123441.png)
+![img](images/Screenshot%202026-05-03%20123508.png)
+![img](images/Screenshot%202026-05-03%20123527.png)
+![img](images/Screenshot%202026-05-03%20123555.png)
+![img](images/Screenshot%202026-05-03%20123639.png)
+![img](images/Screenshot%202026-05-03%20123659.png)
+![img](images/Screenshot%202026-05-03%20123722.png)
+![img](images/Screenshot%202026-05-03%20123742.png)
+![img](images/Screenshot%202026-05-03%20123806.png)
+![img](images/Screenshot%202026-05-03%20123827.png)
+![img](images/Screenshot%202026-05-03%20123854.png)
+![img](images/Screenshot%202026-05-03%20123916.png)
+![img](images/Screenshot%202026-05-03%20123937.png)
+![img](images/Screenshot%202026-05-03%20124007.png)
+![img](images/Screenshot%202026-05-03%20124027.png)
+![img](images/Screenshot%202026-05-03%20124047.png)
+![img](images/Screenshot%202026-05-03%20124110.png)
+![img](images/Screenshot%202026-05-03%20124130.png)
+![img](images/Screenshot%202026-05-03%20124154.png)
+![img](images/Screenshot%202026-05-03%20124214.png)
+![img](images/Screenshot%202026-05-03%20124542.png)
+![img](images/Screenshot%202026-05-03%20124759.png)
+![img](images/Screenshot%202026-05-03%20124820.png)
+![img](images/Screenshot%202026-05-03%20124851.png)
+![img](images/Screenshot%202026-05-03%20124909.png)
+![img](images/Screenshot%202026-05-03%20124928.png)
+![img](images/Screenshot%202026-05-03%20124946.png)
+![img](images/Screenshot%202026-05-03%20125030.png)
+![img](images/Screenshot%202026-05-03%20125051.png)
+![img](images/Screenshot%202026-05-03%20180618.png)
 
-### 🖼️ Images
-
-![Screenshot 1](images/screenshot.png)
-![Screenshot 2](images/screenshot.png)
-![Screenshot 3](images/screenshot.png)
-![Screenshot 4](images/screenshot.png)
-![Screenshot 5](images/screenshot.png)
-![Screenshot 6](images/screenshot.png)
-![Screenshot 7](images/screenshot.png)
-![Screenshot 8](images/screenshot.png)
-![Screenshot 9](images/screenshot.png)
-![Screenshot 10](images/screenshot.png) 
+---
 
 ## 🎯 Goal
-To build a complete real-time data pipeline using Kafka, Spark Streaming, and Hadoop inside Docker.
+Build a full real-time streaming pipeline using Kafka + Spark + Hadoop inside Docker.
+
+---
 
 ## 👩‍💻 Author
 Data Engineering Project
