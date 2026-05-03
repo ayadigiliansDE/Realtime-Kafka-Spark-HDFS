@@ -1,70 +1,47 @@
 # 🚀 Real-Time Kafka Spark Streaming Pipeline
 
-This project is a real-time data engineering pipeline built using **Kafka, Spark Streaming, Hadoop HDFS, and Docker**.  
-It simulates streaming data ingestion, processing, and storage in a distributed environment.
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
+![Kafka](https://img.shields.io/badge/Kafka-Streaming-black)
+![Spark](https://img.shields.io/badge/Spark-Processing-orange)
+![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
----
+## 📌 Overview
+This project is a real-time data engineering pipeline built using Apache Kafka, Spark Streaming, Hadoop HDFS, and Docker. It simulates an end-to-end streaming workflow: data ingestion → processing → storage.
 
-## 🧱 Architecture Overview
-
-The pipeline consists of the following components:
-
-- **Kafka Producer**: Generates and sends streaming data
-- **Kafka Broker**: Handles message streaming
-- **Spark Streaming Job**: Processes real-time data
-- **HDFS (Hadoop)**: Stores processed data
-- **Docker Compose**: Orchestrates the entire environment
-
----
+## 🧱 Architecture
+- Kafka Producer → generates streaming data  
+- Kafka Broker → handles message streaming  
+- Spark Streaming → processes real-time data  
+- Hadoop HDFS → stores processed output  
+- Docker Compose → runs the full system  
 
 ## ⚙️ Tech Stack
-
-- Apache Kafka
-- Apache Spark (Structured Streaming)
-- Hadoop HDFS
-- Python (PySpark)
-- Docker & Docker Compose
-
----
+Kafka • Spark • Hadoop HDFS • Python (PySpark) • Docker • Docker Compose  
 
 ## 📁 Project Structure
-
----
+Realtime-Kafka-Spark-HDFS/  
+├── producer.py  
+├── docker-compose.yml  
+├── scripts/spark_streaming.py  
+├── images/  
+│   ├── kafka_producer.png  
+│   ├── spark_streaming.png  
+│   ├── hdfs_output.png  
+│   └── docker_status.png  
 
 ## ▶️ How to Run
+docker-compose up -d  
+python producer.py  
+python scripts/spark_streaming.py  
 
-1. Start the cluster:
-```bash
-docker-compose up -d
-python producer.py
-python scripts/spark_streaming.py
-📊 Screenshots
+## 📊 Screenshots
+Kafka Producer → images/kafka_producer.png  
+Spark Streaming → images/spark_streaming.png  
+HDFS Output → images/hdfs_output.png  
+Docker Status → images/docker_status.png  
 
-All execution evidence and system outputs are included below:
+## 🎯 Goal
+To build a complete real-time data pipeline using Kafka, Spark Streaming, and Hadoop inside Docker.
 
-📌 Stored in images/ folder
-
-Kafka Producer running
-Spark Streaming processing
-HDFS output results
-Docker containers status
-🎯 Project Goal
-
-To demonstrate a real-time data pipeline that:
-
-Ingests streaming data
-Processes it using Spark
-Stores results in HDFS
-Runs fully inside Docker containers
-👩‍💻 Author
-
-Developed as part of a Data Engineering learning journey.
-
----
-
-# 🚀 بعد ما تلصقيه اعملي:
-
-```bash
-git add README.md
-git commit -m "Add professional README"
-git push origin main
+## 👩‍💻 Author
+Data Engineering Project
