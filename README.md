@@ -35,10 +35,27 @@ python producer.py
 python scripts/spark_streaming.py  
 
 ## 📊 Screenshots
-Kafka Producer → images/kafka_producer.png  
-Spark Streaming → images/spark_streaming.png  
-HDFS Output → images/hdfs_output.png  
-Docker Status → images/docker_status.png  
+
+All project execution screenshots are included below:
+
+📌 Kafka Producer logs  
+📌 Spark Streaming execution  
+📌 HDFS output verification  
+📌 Docker containers status  
+📌 Cluster setup and runtime logs  
+
+### 🖼️ Images
+
+![Screenshot 1](images/screenshot.png)
+![Screenshot 2](images/screenshot.png)
+![Screenshot 3](images/screenshot.png)
+![Screenshot 4](images/screenshot.png)
+![Screenshot 5](images/screenshot.png)
+![Screenshot 6](images/screenshot.png)
+![Screenshot 7](images/screenshot.png)
+![Screenshot 8](images/screenshot.png)
+![Screenshot 9](images/screenshot.png)
+![Screenshot 10](images/screenshot.png) 
 
 ## 🎯 Goal
 To build a complete real-time data pipeline using Kafka, Spark Streaming, and Hadoop inside Docker.
