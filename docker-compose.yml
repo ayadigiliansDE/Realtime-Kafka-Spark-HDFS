@@ -6,8 +6,8 @@ services:
     container_name: namenode
     restart: always
     ports:
-      - "9870:9870"
-      - "9010:9000"
+      - 9870:9870
+      - 9010:9000
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
@@ -23,8 +23,8 @@ services:
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
-      - SERVICE_PRECONDITION=namenode:9870
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      SERVICE_PRECONDITION: "namenode:9870"
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
     ports:
       - "9864:9864"
     env_file:
@@ -35,16 +35,16 @@ services:
     container_name: resourcemanager
     restart: always
     environment:
-      - SERVICE_PRECONDITION=namenode:9000 namenode:9870 datanode:9864
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
       - ./hadoop.env
 
-  nodemanager:
+  nodemanager1:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
     container_name: nodemanager
     restart: always
     environment:
-      - SERVICE_PRECONDITION=namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
       - ./hadoop.env
 
@@ -53,55 +53,11 @@ services:
     container_name: historyserver
     restart: always
     environment:
-      - SERVICE_PRECONDITION=namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
       - ./hadoop.env
-
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.1
-    container_name: zookeeper
-    environment:
-      - ZOOKEEPER_CLIENT_PORT=2181
-    ports:
-      - "2181:2181"
-
-  kafka:
-    image: confluentinc/cp-kafka:7.5.1
-    container_name: broker
-    depends_on:
-      - zookeeper
-    environment:
-      - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_LISTENERS=DOCKER://0.0.0.0:29092,LOCALHOST://0.0.0.0:9092
-      - KAFKA_ADVERTISED_LISTENERS=DOCKER://broker:29092,LOCALHOST://localhost:9092
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=DOCKER:PLAINTEXT,LOCALHOST:PLAINTEXT
-      - KAFKA_INTER_BROKER_LISTENER_NAME=DOCKER
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
-    ports:
-      - "9092:9092"
-      - "29092:29092"
-
-  hbase:
-    image: harisekhon/hbase
-    container_name: hbase
-    depends_on:
-      - zookeeper
-      - namenode
-    ports:
-      - "16000:16000"
-      - "16010:16010"
-      - "16020:16020"
-      - "9090:9090"
-    environment:
-      - HBASE_CONF_hbase_rootdir=hdfs://namenode:9000/hbase
-      - HBASE_CONF_hbase_cluster_distributed=true
-      - HBASE_CONF_hbase_zookeeper_quorum=zookeeper
-    volumes:
-      - hbase_data:/hbase-data
 
   spark-master:
     image: bde2020/spark-master:3.0.0-hadoop3.2
@@ -138,8 +94,8 @@ services:
     env_file:
       - ./hadoop-hive.env
     environment:
-      - HIVE_CORE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://hive-metastore/metastore
-      - SERVICE_PRECONDITION=hive-metastore:9083
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
 
@@ -150,7 +106,7 @@ services:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
     environment:
-      - SERVICE_PRECONDITION=namenode:9870 datanode:9864 hive-metastore-postgresql:5432
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 hive-metastore-postgresql:5432"
     ports:
       - "9083:9083"
 
@@ -166,8 +122,33 @@ services:
     ports:
       - "8089:8089"
 
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.1
+    container_name: zookeeper
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.1
+    container_name: broker
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=DOCKER://0.0.0.0:29092,LOCALHOST://0.0.0.0:9092
+      - KAFKA_ADVERTISED_LISTENERS=DOCKER://broker:29092,LOCALHOST://localhost:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=DOCKER:PLAINTEXT,LOCALHOST:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=DOCKER
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
   hadoop_historyserver:
-  hbase_data:
